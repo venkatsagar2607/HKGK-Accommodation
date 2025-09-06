@@ -17,7 +17,7 @@ const App = () => {
 
   const getBookingData = async () => {
     try {
-      const response = await fetch('http://localhost:3001/track', {
+      const response = await fetch('https://hkgk-temple-server.onrender.com/track', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ const App = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch('http://localhost:3001/track', {
+      const response = await fetch('https://hkgk-temple-server.onrender.com/track', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -99,7 +99,7 @@ const App = () => {
     console.log(phoneNumber);
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:3001/admin', {
+      const response = await fetch('https://hkgk-temple-server.onrender.com/admin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

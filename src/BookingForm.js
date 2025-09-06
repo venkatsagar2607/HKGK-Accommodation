@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './BookingForm.css'; // Import the CSS file
 
+//hello sagar
+
 const BookingForm = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -40,9 +42,12 @@ const BookingForm = () => {
             data.append(key, formData[key]);
         });
 
-        const response = await fetch('http://localhost:3001/bookings', {
+        const response = await fetch('https://hkgk-temple-server.onrender.com/bookings', {
             method: 'POST',
-            body: data
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
         });
         const result = await response.json();
         if (result.success) {
@@ -57,7 +62,7 @@ const BookingForm = () => {
         <div className="form-container">
             <form onSubmit={handleSubmit} className="booking-form">
                 <button type="button" onClick={trackChange} className="track-btn">Track Booking</button>
-                <h2>Hare Krishna Gokula Kshetram Accomadation</h2>
+                <h2>Hare Krishna Gokula Kshetram <i>FOLK</i>  Accomadation</h2>
                 <p style={{ fontStyle: "italic" }}>A home away from home</p>
 
                 <div className="form-group">

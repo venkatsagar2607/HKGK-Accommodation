@@ -8,7 +8,7 @@ const TrackBooking = () => {
 
     const getRecords = async () => {
         console.log(phoneNumber)
-        const response = await fetch('http://localhost:3001/track', {
+        const response = await fetch('https://hkgk-temple-server.onrender.com/track', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -42,7 +42,7 @@ const TrackBooking = () => {
 
     return (
         <>
-            <div style={{ margin: '15px 0px 15px 0px', display: 'flex', justifyContent: 'center', gap: '1rem', alignItems: 'center' }}>
+            <div className="search-container">
                 <input
                     type="number"
                     placeholder="Search by phone number..."
@@ -51,8 +51,7 @@ const TrackBooking = () => {
                     style={{
                         padding: '8px 12px',
                         fontSize: '16px',
-                        width: '100%',
-                        maxWidth: '300px',
+                        width: '40%',
                         borderRadius: '4px',
                         border: '1px solid #ccc',
                     }}

@@ -1,113 +1,186 @@
-/* src/BookingForm.css */
+/* src/BookingForm.css  hi sagar*/
+
+/* Container: Responsive background and centering */
 .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f0f2f5;
-  padding: 20px;
+  background: linear-gradient(120deg, #f0f2f5 73%, #e0e7ff 100%);
+  padding: 24px 8px;
 }
 
+/* Main form card */
 .booking-form {
-  background-color: #ffffff;
-  padding: 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 32px 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(34, 22, 87, 0.11);
   width: 100%;
-  max-width: 600px;
+  max-width: 420px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
+/* Heading and subtitle styles  heloo sagaga*/
 .booking-form h2 {
   text-align: center;
-  margin-bottom: 30px;
-  color: #333;
+  margin-bottom: 5px;
+  color: #030207;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: 0.5px;
 }
 
-.booking-form p{
-    text-align: center;
-    font-style: italic;
-    color: rgb(72, 10, 245);
+.booking-form p {
+  text-align: center;
+  font-style: italic;
+  color: #6244e2;
+  font-size: 1rem;
+  margin-bottom: 10px;
 }
 
+/* Form group spacing */
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 17px;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Labels */
 .form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #555;
+  margin-bottom: 7px;
+  font-weight: 600;
+  color: #594a86;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
 }
 
+/* Inputs and selects */
 .form-group input,
 .form-group select {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
+  padding: 13px 12px;
+  border: 1.5px solid #cfd6e7;
   border-radius: 8px;
   box-sizing: border-box;
-  font-size: 16px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  transition: border-color 0.3s ease-in-out;
+  font-size: 1.05rem;
+  background: #fafbfe;
+  color: #28255a;
+  transition: border-color 0.25s;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: #007bff;
+  border-color: #6a51d6;
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+  background: #f3f4fe;
+  box-shadow: 0 0 6px rgba(100, 71, 200, 0.13);
 }
 
+/* Date group: Arrange date fields side by side for larger screens, stack on phones */
 .date-group {
   display: flex;
-  gap: 20px;
+  gap: 16px;
 }
-
 .date-group .date-field {
   flex: 1;
 }
 
+/* File input - if enabled */
 .file-upload-group input[type="file"] {
-  border: 1px dashed #ccc;
-  padding: 15px;
+  border: 1.5px dashed #ccc;
+  padding: 15px 5px;
   cursor: pointer;
-  background-color: #fafafa;
+  background: #f6f8fe;
+  border-radius: 7px;
 }
 
+/* Main Book Now button */
 .submit-btn {
-  width: 100%;
-  padding: 15px;
-  background-color: #007bff;
-  color: white;
+  /* Updated to center the button by reducing its width and adding auto margins */
+  width: 65%;
+  display: block;
+  margin: 0 auto 5px auto;
+  padding: 14px;
+  background: linear-gradient(92deg, #3810e7, #0f71da 85%);
+  color: #fff;
   border: none;
   border-radius: 8px;
-  font-size: 18px;
+  font-size: 1.08rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-  margin-top: 10px;
+  transition: background 0.25s, transform 0.20s;
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 10px rgba(100, 71, 200, 0.09);
 }
 
+/* Small, centered Track Booking button */
 .track-btn {
-  width: 30%;
-  padding: 15px;
-  background-color: #007bff;
-  color: white;
+  width: 38%;
+  display: block;
+  /* Updated for left alignment */
+  margin: 0 0 0.9rem 0;
+  padding: 10px 14px;
+  background: linear-gradient(92deg, #3431e2 10%, #6a51d6 88%);
+  color: #fff;
+  font-size: 0.98rem;
+  font-weight: 600;
   border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: bold;
+  border-radius: 7px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-  margin-top: 10px;
+  letter-spacing: 0.25px;
+  box-shadow: 0 2px 9px rgba(100, 71, 200, 0.09);
+  transition: background 0.25s, transform 0.20s;
 }
 
-.submit-btn:hover {
-  background-color: #0056b3;
+.submit-btn:hover, .track-btn:hover {
+  filter: brightness(1.07);
   transform: translateY(-2px);
+}
+
+/* For mobile phones */
+@media (max-width: 600px) {
+  .booking-form {
+    padding: 18px 6px;
+    border-radius: 9px;
+    max-width: 98vw;
+    min-width: 0;
+    gap: 15px;
+  }
+  .form-container {
+    padding: 4px;
+  }
+  .date-group {
+    flex-direction: column;
+    gap: 6px;
+  }
+  /* Restore full width for better mobile usability */
+  .submit-btn {
+    width: 80%;
+    margin: 5px auto 0 auto;
+    font-size: 1.06rem;
+    padding: 13px;
+  }
+  .track-btn {
+    width: 56%;
+    font-size: 1.01rem;
+    padding: 10px 0;
+    /* Updated for left alignment on mobile */
+    margin: 0 0 0.9rem 0;
+  }
+}
+
+/* Improve text sizing on very small screens */
+@media (max-width: 370px) {
+  .booking-form h2 {
+    font-size: 1.04rem;
+  }
+  .form-group label, 
+  .booking-form p {
+    font-size: 0.95rem;
+  }
 }
