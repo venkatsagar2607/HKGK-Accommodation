@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './BookingForm.css'; // Import the CSS file
+import { Flag } from 'lucide-react';
 
 //hello sagar
 
@@ -19,6 +20,8 @@ const BookingForm = () => {
         purpose: '',
     });
 
+    const [disabled, setDisabled] = useState(false)
+
     const nav = useNavigate();
 
     const handleChange = (e) => {
@@ -35,6 +38,7 @@ const BookingForm = () => {
 
 
     const handleSubmit = async (e) => {
+        setDisabled(true)
         e.preventDefault();
         // Use FormData to send files
         const data = new FormData();
@@ -55,6 +59,8 @@ const BookingForm = () => {
         } else {
             alert('Error: ' + result.error);
         }
+
+        setDisabled(false)
     };
 
 
@@ -208,7 +214,7 @@ const BookingForm = () => {
                     </select>
                 </div>
 
-                <button type="submit" className="submit-btn">Book Now</button>
+                <button type="submit" className="submit-btn" disabled={disabled}>Book Now</button>
             </form>
         </div>
 
