@@ -15,6 +15,8 @@ const TrackBooking = () => {
             },
             body: JSON.stringify({ phoneNumber })
         });
+
+        console.log(response)
         const result = await response.json();
 
         if (result.success === true) {
@@ -86,13 +88,10 @@ const TrackBooking = () => {
                                 <td>{row.checkinTime}</td>
                                 <td>{row.purpose}</td>
                                 <td>
-                                    <td>
-                                        {row.status === 'pending' && <span className="pending-badge">Pending</span>}
-                                        {row.status === 'approved' && <span className="approved-badge">Approved</span>}
-                                        {row.status === 'denied' && <span className="denied-badge">Denied</span>}
-                                        {row.status === 'bed assigned' && <span className="assigned-badge">Bed Assigned</span>}
-                                    </td>
-
+                                    {row.status === 'pending' && <span className="pending-badge">Pending</span>}
+                                    {row.status === 'approved' && <span className="approved-badge">Approved</span>}
+                                    {row.status === 'denied' && <span className="denied-badge">Denied</span>}
+                                    {row.status === 'bed assigned' && <span className="assigned-badge">Bed Assigned</span>}
                                 </td>
 
                             </tr>
