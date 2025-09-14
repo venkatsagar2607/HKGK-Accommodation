@@ -1,15 +1,12 @@
-// src/BookingForm.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './BookingForm.css'; // Import the CSS file
-import { Flag } from 'lucide-react';
-
-//hello sagar
 
 const BookingForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         phoneNumber: '',
+        email: '',
         folkGuidName: '',
         fromDate: '',
         toDate: '',
@@ -20,8 +17,7 @@ const BookingForm = () => {
         purpose: '',
     });
 
-    const [disabled, setDisabled] = useState(false)
-
+    const [disabled, setDisabled] = useState(false);
     const nav = useNavigate();
 
     const handleChange = (e) => {
@@ -33,76 +29,99 @@ const BookingForm = () => {
     };
 
     const trackChange = () => {
-        nav('/track-booking')
-    }
-
-
-    const handleSubmit = async (e) => {
-        setDisabled(true)
-        e.preventDefault();
-        // Use FormData to send files
-        const data = new FormData();
-        Object.keys(formData).forEach(key => {
-            data.append(key, formData[key]);
-        });
-
-        const response = await fetch('https://hkgk-temple-server.onrender.com/bookings', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        });
-        const result = await response.json();
-        if (result.success) {
-            alert('Booking request sent!');
-        } else {
-            alert('Error: ' + result.error);
-        }
-
-        setDisabled(false)
+        nav('/track-booking');
     };
 
+    
+
+
+
+    // Function to validate Aadhaar number via ApyHub API
+    // const validateAadhaar = async (aadhaar) => {
+    //     try {
+    //         const response = await fetch('https://api.apyhub.com/validate/aadhaar', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'apy-token': 'APY0gl7Ov0qSJKsZykoklKJcJ5EE2f3dC0XedMfGIsV9qq6ywWWW6umG7pT31XEMJan7C',
+    //             },
+    //             body: JSON.stringify({ aadhaar }),
+    //         });
+    //         const result = await response.json();
+    //         return result.data === true;
+    //     } catch (error) {
+    //         console.error('Aadhaar validation error:', error);
+    //         return false;
+    //     }
+    // };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setDisabled(true);
+
+        // Aadhaar validation before submitting form
+        // const isValidAadhaar = await validateAadhaar(formData.aadharNumber);
+        // if (!isValidAadhaar) {
+        //     alert('Invalid Aadhaar Number. Please check and try again.');
+        //     setDisabled(false);
+        //     return;
+        // }
+
+        // Prepare JSON data (since backend expects JSON)
+        const submissionData = { ...formData };
+        // If you have files (yourPhoto, aadharImage), handle separately; currently omitted
+
+        try {
+            const response = await fetch('https://hkgk-temple-server.onrender.com/bookings', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(submissionData),
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                alert('Booking request sent!');
+            } else {
+                alert('Error: ' + result.error);
+            }
+        } catch (err) {
+            alert('Request failed: ' + err.message);
+        } finally {
+            setDisabled(false);
+        }
+    };
 
     return (
         <div className="form-container">
             <form onSubmit={handleSubmit} className="booking-form">
-                <button type="button" onClick={trackChange} className="track-btn">Track Booking</button>
-                <h2>Hare Krishna Gokula Kshetram <i>FOLK</i>  Accomadation</h2>
-                <p style={{ fontStyle: "italic" }}>A home away from home</p>
+                <button type="button" onClick={trackChange} className="track-btn">
+                    Track Booking
+                </button>
+                <h2>
+                    Hare Krishna Gokula Kshetram <i>FOLK</i> Accomadation
+                </h2>
+                <p style={{ fontStyle: 'italic' }}>A home away from home</p>
 
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
+                    <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="phoneNumber">Phone Number</label>
-                    <input
-                        type="tel"
-                        id="phoneNumber"
-                        name="phoneNumber"
-                        value={formData.phoneNumber}
-                        onChange={handleChange}
-                        required
-                    />
+                    <input type="tel" id="phoneNumber" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required />
+                </div>
+
+                <div className="form-group">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="folkGuidName">Folk Guide Name</label>
-                    <select
-                        id="folkGuidName"
-                        name="folkGuidName"
-                        value={formData.folkGuidName}
-                        onChange={handleChange}
-                    >
+                    <select id="folkGuidName" name="folkGuidName" value={formData.folkGuidName} onChange={handleChange}>
                         <option value="">Select your Folk Guide</option>
                         <option value="HG Vamshidhara Dasa">HG Vamshidhara Prabhu</option>
                         <option value="HG Vilasa Vigraha Dasa">HG Vilasa Vigraha Prabhu</option>
@@ -126,85 +145,28 @@ const BookingForm = () => {
                 <div className="form-group date-group">
                     <div className="date-field">
                         <label htmlFor="fromDate">From Date</label>
-                        <input
-                            type="date"
-                            id="fromDate"
-                            name="fromDate"
-                            value={formData.fromDate}
-                            onChange={handleChange}
-                            required
-                        />
+                        <input type="date" id="fromDate" name="fromDate" value={formData.fromDate} onChange={handleChange} required />
                     </div>
                     <div className="date-field">
                         <label htmlFor="toDate">To Date</label>
-                        <input
-                            type="date"
-                            id="toDate"
-                            name="toDate"
-                            value={formData.toDate}
-                            onChange={handleChange}
-                            required
-                        />
+                        <input type="date" id="toDate" name="toDate" value={formData.toDate} onChange={handleChange} required />
                     </div>
                 </div>
 
                 <div className="form-group">
                     <label htmlFor="checkinTime">Check-in Time</label>
-                    <input
-                        type="time"
-                        id="checkinTime"
-                        name="checkinTime"
-                        value={formData.checkinTime}
-                        onChange={handleChange}
-                        required
-                    />
+                    <input type="time" id="checkinTime" name="checkinTime" value={formData.checkinTime} onChange={handleChange} required />
                 </div>
-
-                {/* <div className="form-group file-upload-group">
-                    <label htmlFor="yourPhoto">Your Photo</label>
-                    <input
-                        type="file"
-                        id="yourPhoto"
-                        name="yourPhoto"
-                        accept="image/*"
-                        onChange={handleChange}
-                        required
-                    />
-                </div> */}
 
                 <div className="form-group">
-                    <label htmlFor="aadharNumber">Aadhar Number</label>
-                    <input
-                        type="text"
-                        id="aadharNumber"
-                        name="aadharNumber"
-                        value={formData.aadharNumber}
-                        onChange={handleChange}
-                        required
-                    />
+                    <label htmlFor="aadharNumber" maxlength="12"
+                    >Aadhar Number</label>
+                    <input type="text" id="aadharNumber" name="aadharNumber" value={formData.aadharNumber} onChange={handleChange} required />
                 </div>
-
-                {/* <div className="form-group file-upload-group">
-                    <label htmlFor="aadharImage">Upload Aadhar Image</label>
-                    <input
-                        type="file"
-                        id="aadharImage"
-                        name="aadharImage"
-                        accept="image/*"
-                        onChange={handleChange}
-                        required
-                    />
-                </div> */}
 
                 <div className="form-group">
                     <label htmlFor="purpose">Purpose</label>
-                    <select
-                        id="purpose"
-                        name="purpose"
-                        value={formData.purpose}
-                        onChange={handleChange}
-                        required
-                    >
+                    <select id="purpose" name="purpose" value={formData.purpose} onChange={handleChange} required>
                         <option value="">-- Select purpose --</option>
                         <option value="Weekend Volunteering">Weekend Volunteering</option>
                         <option value="Festival Volunteering">Festival Volunteering</option>
@@ -214,10 +176,11 @@ const BookingForm = () => {
                     </select>
                 </div>
 
-                <button type="submit" className="submit-btn" disabled={disabled}>Book Now</button>
+                <button type="submit" className="submit-btn" disabled={disabled}>
+                    Book Now
+                </button>
             </form>
         </div>
-
     );
 };
 

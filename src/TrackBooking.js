@@ -65,6 +65,7 @@ const TrackBooking = () => {
                         <tr>
                             <th>Name</th>
                             <th>Phone Number</th>
+                            <th>Email</th>
                             <th>Folk Guide</th>
                             <th>From Date</th>
                             <th>To Date</th>
@@ -78,6 +79,7 @@ const TrackBooking = () => {
                             <tr key={idx}>
                                 <td>{row.name}</td>
                                 <td>{row.phoneNumber}</td>
+                                <td>{row.email}</td>
                                 <td>{row.folkGuidName}</td>
                                 <td>{new Date(row.fromDate).toDateString()}</td>
                                 <td>{new Date(row.toDate).toDateString()}</td>
@@ -88,6 +90,7 @@ const TrackBooking = () => {
                                         {row.status === 'pending' && <span className="pending-badge">Pending</span>}
                                         {row.status === 'approved' && <span className="approved-badge">Approved</span>}
                                         {row.status === 'denied' && <span className="denied-badge">Denied</span>}
+                                        {row.status === 'bed assigned' && <span className="assigned-badge">Bed Assigned</span>}
                                     </td>
 
                                 </td>

@@ -1,202 +1,178 @@
-.table-container {
-  margin: 20px auto;
-  max-width: 900px;
-  overflow-x: auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
-  background: #fff;
+/* Base Styles - Desktop First Approach */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
 
 .search-container {
-  padding: 1rem;
   display: flex;
-  /* Make the container a flexbox */
   justify-content: center;
-  /* Center horizontally */
   align-items: center;
-  /* Center vertically */
-  gap: 10px;
-  /* Add some space between the input and button */
+  gap: 12px;
+  margin: 20px auto;
+  max-width: 900px;
+  padding: 0 20px;
 }
 
-.search-container input {
-  /* Existing input styles should be here */
-}
-
-.search-container button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
+.search-container input[type="number"] {
+  flex: 1 1 40%;
+  padding: 10px 15px;
   font-size: 16px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+  border-radius: 5px;
+  border: 1.5px solid #ccc;
+  transition: border-color 0.3s ease;
 }
 
-.search-container button:hover {
+.search-container input[type="number"]:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+}
+
+.submit-btn {
+  padding: 10px 25px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover,
+.submit-btn:focus {
   background-color: #0056b3;
+  outline: none;
 }
 
+/* Table Container */
+.table-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+  overflow-x: auto;
+  /* Enable horizontal scroll if needed */
+}
 
+/* Styled Table */
 .styled-table {
   width: 100%;
   border-collapse: collapse;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px;
-  color: #333;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  min-width: 700px;
+  /* set min width to trigger scroll on narrow devices */
 }
 
-.styled-table thead tr {
-  background-color: #4a90e2;
-  color: #ffffff;
-  text-align: left;
+.styled-table thead {
+  background-color: #007bff;
+  color: white;
 }
 
 .styled-table th,
 .styled-table td {
-  padding: 12px 15px;
-}
-
-.styled-table tbody tr {
-  border-bottom: 1px solid #dddddd;
-  transition: background-color 0.3s ease;
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-  background-color: #f3f6fc;
-}
-
-.styled-table tbody tr:hover {
-  background-color: #d3e4ff;
-  cursor: pointer;
-}
-
-.submit-btn {
-  width: 150px;
-  padding: 15px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-  margin-top: 10px;
-}
-
-.pending-badge {
-  background-color: #ffd559;
-  color: #9f5712;
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 16px;
-  display: inline-block;
-  text-align: center;
-}
-
-.approved-badge {
-  background-color: #96ff59;
-  color: #080808;
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 16px;
-  display: inline-block;
-  text-align: center;
-}
-
-.denied-badge {
-  background-color: #e95013;
-  color: #080808;
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 16px;
-  display: inline-block;
-  text-align: center;
-}
-
-
-.styled-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 16px;
-  color: #333;
-}
-
-.styled-table thead tr {
-  background-color: #4a90e2;
-  color: #ffffff;
   text-align: left;
-}
-
-.styled-table th,
-.styled-table td {
   padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+  min-width: 100px;
+  white-space: nowrap;
+  /* prevent wrapping */
+  font-size: 16px;
 }
 
-.styled-table tbody tr {
-  border-bottom: 1px solid #dddddd;
-  transition: background-color 0.3s ease;
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-  background-color: #f3f6fc;
-}
-
+/* Hover Effect on Table Rows */
 .styled-table tbody tr:hover {
-  background-color: #d3e4ff;
-  cursor: pointer;
+  background-color: #f1faff;
 }
 
-.submit-btn {
-  width: 150px;
-  padding: 15px;
-  background-color: #007bff;
+/* Badge Styles */
+.pending-badge,
+.approved-badge,
+.denied-badge,
+.assigned-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
   color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.assigned-badge {
+  background-color: aqua;
 }
 
 .pending-badge {
-  background-color: #ffd559;
-  color: #9f5712;
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 16px;
-  display: inline-block;
-  text-align: center;
+  background-color: #ffc107;
+  /* Amber */
 }
 
 .approved-badge {
-  background-color: #96ff59;
-  color: #080808;
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 16px;
-  display: inline-block;
-  text-align: center;
+  background-color: #28a745;
+  /* Green */
 }
 
 .denied-badge {
-  background-color: #e95013;
-  color: #080808;
-  padding: 6px 18px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 16px;
-  display: inline-block;
-  text-align: center;
+  background-color: #dc3545;
+  /* Red */
+}
+
+/* Responsive Styles: Mobile and Tablet */
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+    /* slightly smaller font */
+  }
+
+  .search-container {
+    flex-direction: column;
+    max-width: 90%;
+  }
+
+  .search-container input[type="number"] {
+    width: 100%;
+    flex: none;
+    font-size: 16px;
+  }
+
+  .submit-btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    margin-top: 10px;
+  }
+
+  .table-container {
+    padding: 0 10px;
+    max-width: 100%;
+  }
+
+  .styled-table {
+    min-width: 600px;
+    /* Make table slightly narrower but still horizontal */
+    font-size: 14px;
+  }
+
+  .styled-table th,
+  .styled-table td {
+    padding: 8px 10px;
+    min-width: 80px;
+  }
+
+  /* Optional: Increase horizontal scrolling smoothness */
+  .table-container {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
 }
