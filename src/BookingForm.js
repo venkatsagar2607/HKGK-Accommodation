@@ -43,7 +43,7 @@ const BookingForm = () => {
     //             method: 'POST',
     //             headers: {
     //                 'Content-Type': 'application/json',
-    //                 'apy-token': 'APY0gl7Ov0qSJKsZykoklKJcJ5EE2f3dC0XedMfGIsV9qq6ywWWW6umG7pT31XEMJan7C',
+    //                 'apy-token': '',
     //             },
     //             body: JSON.stringify({ aadhaar }),
     //         });
