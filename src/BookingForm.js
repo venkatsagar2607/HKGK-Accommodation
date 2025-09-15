@@ -32,10 +32,6 @@ const BookingForm = () => {
         nav('/track-booking');
     };
 
-    
-
-
-
     // Function to validate Aadhaar number via ApyHub API
     // const validateAadhaar = async (aadhaar) => {
     //     try {
@@ -171,7 +167,8 @@ const BookingForm = () => {
                         <option value="Weekend Volunteering">Weekend Volunteering</option>
                         <option value="Festival Volunteering">Festival Volunteering</option>
                         <option value="Outstation FOLK Visit">Outstation FOLK Visit</option>
-                        <option value="Mangalaharathi">Mangalaharathi</option>
+                        <option value="Mangal Arati">Mangal Arati</option>
+                        <option value="Personal Purpose">Personal Purpose</option>
                         <option value="Other">Other</option>
                     </select>
                 </div>
