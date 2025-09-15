@@ -159,7 +159,7 @@ const BookingForm = () => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="aadharNumber" maxlength="12"
+                    <label type='number' htmlFor="aadharNumber" maxlength="12"
                     >Aadhar Number</label>
                     <input type="text" id="aadharNumber" name="aadharNumber" value={formData.aadharNumber} onChange={handleChange} required />
                 </div>

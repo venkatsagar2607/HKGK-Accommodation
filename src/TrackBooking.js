@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './TrackBooking.css'; // Import the CSS file
-
 const TrackBooking = () => {
 
     const [phoneNumber, setPhoneNumber] = useState(0)
