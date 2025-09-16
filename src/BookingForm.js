@@ -11,6 +11,7 @@ const BookingForm = () => {
         fromDate: '',
         toDate: '',
         checkinTime: '',
+        checkoutTime:'',
         yourPhoto: null,
         aadharNumber: '',
         aadharImage: null,
@@ -152,6 +153,10 @@ const BookingForm = () => {
                 <div className="form-group">
                     <label htmlFor="checkinTime">Check-in Time</label>
                     <input type="time" id="checkinTime" name="checkinTime" value={formData.checkinTime} onChange={handleChange} required />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="checkoutTime">Check-out Time</label>
+                    <input type="time" id="checkoutTime" name="checkoutTime" value={formData.checkoutTime} onChange={handleChange} required />
                 </div>
 
                 <div className="form-group">

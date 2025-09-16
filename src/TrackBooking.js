@@ -71,6 +71,7 @@ const TrackBooking = () => {
                             <th>From Date</th>
                             <th>To Date</th>
                             <th>CheckinTime</th>
+                            <th>checkoutTime</th>
                             <th>Purpose</th>
                             <th>Status</th>
                         </tr>
@@ -85,6 +86,7 @@ const TrackBooking = () => {
                                 <td>{new Date(row.fromDate).toDateString()}</td>
                                 <td>{new Date(row.toDate).toDateString()}</td>
                                 <td>{row.checkinTime}</td>
+                                <td>{row.checkoutTime}</td>
                                 <td>{row.purpose}</td>
                                 <td>
                                     {row.status === 'pending' && <span className="pending-badge">Pending</span>}
