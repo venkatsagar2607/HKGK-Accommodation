@@ -11,7 +11,7 @@ const BookingForm = () => {
         fromDate: '',
         toDate: '',
         checkinTime: '',
-        checkoutTime:'',
+        checkoutTime: '',
         yourPhoto: null,
         aadharNumber: '',
         aadharImage: null,
@@ -162,7 +162,7 @@ const BookingForm = () => {
                 <div className="form-group">
                     <label type='number' htmlFor="aadharNumber" maxlength="12"
                     >Aadhar Number</label>
-                    <input type="text" id="aadharNumber" name="aadharNumber" value={formData.aadharNumber} onChange={handleChange} required />
+                    <input type="text" id="aadharNumber" name="aadharNumber" value={formData.aadharNumber} onChange={handleChange} required maxLength="12" />
                 </div>
 
                 <div className="form-group">
